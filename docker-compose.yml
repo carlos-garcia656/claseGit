@@ -1,0 +1,10 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  fastapi:
+    build: ./fastapi_Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - mysql
+  mysql:
+    image: mysql
