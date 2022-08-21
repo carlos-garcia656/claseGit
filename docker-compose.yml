@@ -1,10 +1,16 @@
 version: "3.9"  # optional since v1.27.0
 services:
   fastapi:
-    build: ./fastapi_Dockerfile
+    image: ingcarlosgarcia656/devops_fastapi:v1
+    build: ./docker_fastapi
     ports:
       - "80:80"
     depends_on:
       - mysql
   mysql:
-    image: mysql
+    image: ingcarlosgarcia656/devops_mysql:v1
+    build: ./docker_mysql
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3306:3306"
